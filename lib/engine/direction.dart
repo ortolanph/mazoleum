@@ -6,10 +6,10 @@ enum Direction {
 
   Direction opposite() {
     return switch (this) {
-        Direction.up => Direction.down,
-        Direction.down => Direction.up,
-        Direction.left => Direction.right,
-        Direction.right => Direction.left,
+      Direction.up => Direction.down,
+      Direction.down => Direction.up,
+      Direction.left => Direction.right,
+      Direction.right => Direction.left,
     };
   }
 
@@ -21,5 +21,4 @@ enum Direction {
       Direction.right => '→',
     };
   }
-
 }

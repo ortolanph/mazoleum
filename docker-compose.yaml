@@ -1,0 +1,15 @@
+name: "Librarium Application"
+
+services:
+  media_watch_app:
+    container_name: librarium_application
+    image: librarium:latest
+    pull_policy: never
+    ports:
+      - "10036:8080"
+    networks:
+      - librarium_net
+
+networks:
+  librarium_net:
+    driver: bridge

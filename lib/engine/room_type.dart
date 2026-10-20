@@ -1,1 +1,1 @@
-enum RoomType { COMMON, START, END }
+enum RoomType { common, start, end }
