@@ -49,16 +49,16 @@ build: clean compile
 
 docker-build:
 	$(call check_installed,docker)
-	@if docker image inspect librarium:old > /dev/null 2>&1; then \
-		echo "Removing media_watch:old..."; \
-		docker rmi librarium:old; \
+	@if docker image inspect mazoleum:old > /dev/null 2>&1; then \
+		echo "Removing mazoleum:old..."; \
+		docker rmi mazoleum:old; \
 	fi
-	@if docker image inspect librarium:latest > /dev/null 2>&1; then \
-		echo "Tagging librarium:latest as old..."; \
-		docker tag librarium:latest librarium:old; \
+	@if docker image inspect mazoleum:latest > /dev/null 2>&1; then \
+		echo "Tagging mazoleum:latest as old..."; \
+		docker tag mazoleum:latest mazoleum:old; \
 	fi
-	docker build -t librarium:latest .
+	docker build -t mazoleum:latest .
 
 docker-run: build
 	$(call check_installed,docker)
-	docker run -d -p 8080:80 --name librarium_application librarium:latest
+	docker run -d -p 8080:80 --name mazoleum_application mazoleum:latest

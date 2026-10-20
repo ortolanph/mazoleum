@@ -2,7 +2,7 @@
 
 Write-Host "---=== Docker Build ===---"
 
-$imageName = "media_watch"
+$imageName = "mazoleum"
 
 Assert-CommandExists -Name "docker"
 
