@@ -1,23 +1,17 @@
 import 'package:mazoleum/engine/room_type.dart';
 
-import 'direction.dart';
+import 'room_direction.dart';
 
 class Room {
-  final int id;
   final int x;
   final int y;
   final RoomType type;
-  late Map<Direction, String> neighbors = {};
+  late List<RoomDirection> exits = [];
 
-  Room({
-    required this.id,
-    required this.x,
-    required this.y,
-    required this.type,
-  });
+  Room({required this.x, required this.y, required this.type});
 
   @override
   String toString() {
-    return "[$id][$x, $y][$type][${neighbors.keys.map((d) => d.symbol()).join(', ')}]";
+    return "[ $x, $y ][ ${type.abbreviation} ][ ${exits.map((d) => d.symbol).join('')} ]";
   }
 }
