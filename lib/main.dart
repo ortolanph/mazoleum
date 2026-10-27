@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mazoleum/presentation/pages/home_page.dart';
 import 'package:mazoleum/presentation/pages/maze_page.dart';
 
+import 'data/maze_config.dart';
+
 void main() {
   runApp(
     MaterialApp(
@@ -9,7 +11,7 @@ void main() {
       initialRoute: "/home",
       routes: {
         "/home": (context) => HomePage(),
-        "/maze": (context) => MazePage(),
+        "/maze": (context) => MazePage(config: RandomMaze()),
       },
     ),
   );

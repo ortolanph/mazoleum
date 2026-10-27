@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mazoleum/data/maze_config.dart';
 
 class MazePage extends StatefulWidget {
-  const MazePage({super.key});
+  const MazePage({super.key, required this.config});
+
+  final MazeConfig config;
 
   @override
   State<MazePage> createState() => _MazePageState();
