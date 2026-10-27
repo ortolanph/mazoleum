@@ -8,6 +8,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  double _currentMazeSize = 5;
+  TextEditingController mazeSizeController = TextEditingController(text: "5");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +35,53 @@ class _HomePageState extends State<HomePage> {
                       final isWide = constraints.maxWidth > 480;
 
                       ElevatedButton randomMaze = ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/maze');
+                        },
                         child: Text("Random Maze"),
                       );
                       ElevatedButton selectSize = ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog<String>(
+                            context: context,
+                            builder: (context) => Dialog.fullscreen(
+                              child: StatefulBuilder(
+                                builder: (context, setDialogState) {
+                                  return Column(
+                                    mainAxisSize: .min,
+                                    mainAxisAlignment: .center,
+                                    children: <Widget>[
+                                      const Text('Choose Maze Size'),
+                                      const SizedBox(height: 15),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 20.0,
+                                        ),
+                                        child: Slider(
+                                          min: 5,
+                                          max: 20,
+                                          divisions: 15,
+                                          onChanged: (value) {
+                                            setDialogState(() {
+                                              _currentMazeSize = value;
+                                            });
+                                          },
+                                          value: _currentMazeSize,
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pushNamed(context, '/maze');
+                                        },
+                                        child: const Text('Play!'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
+                          );
+                        },
                         child: Text("Select Size"),
                       );
                       SizedBox box = SizedBox(width: 24, height: 24);

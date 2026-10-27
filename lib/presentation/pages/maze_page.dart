@@ -13,7 +13,17 @@ class _MazePageState extends State<MazePage> {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Text("Maze Page"),
+          child: Column(
+            children: [
+              Text("Maze Page"),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.popAndPushNamed(context, '/home');
+                },
+                child: Text("Back"),
+              ),
+            ],
+          ),
         ),
       ),
     );
