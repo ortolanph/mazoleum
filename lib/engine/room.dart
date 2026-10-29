@@ -14,4 +14,8 @@ class Room {
   String toString() {
     return "[ $x, $y ][ ${type.abbreviation} ][ ${exits.map((d) => d.symbol).join('')} ]";
   }
+
+  bool isStartingRoom() {
+    return type == RoomType.start;
+  }
 }

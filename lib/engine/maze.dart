@@ -1,5 +1,6 @@
 import 'package:mazoleum/engine/maze_functions.dart';
 import 'package:mazoleum/engine/room.dart';
+import 'package:mazoleum/engine/room_type.dart';
 
 class Maze {
   final Map<int, Room> maze;
@@ -11,8 +12,12 @@ class Maze {
     return maze[calculateHash(x, y)]!;
   }
 
-  Room getRoomById(int id) {
-    return maze[id]!;
+  Room getStartingRoom() {
+    return maze
+        .entries
+        .where((entry) => entry.value.isStartingRoom())
+        .first
+        .value;
   }
 
   String printMaze() {
